@@ -10,6 +10,12 @@ import { Button } from 'primereact/button'
 import { FaChevronDown } from 'react-icons/fa'
 
 export default function Table() {
+  const [page, setPage] = useState(1)
+  const [rowInput, setRowInput] = useState(0)
+  const rows = 12
+  const onPageChange = (e: { page: number }) => {
+    setPage(e.page + 1)
+  }
   return (
     <div className="p-20 ">
       <PrimeReactProvider>
@@ -21,6 +27,7 @@ export default function Table() {
           <Column field="date_start" header="Date Start" style={{ width: '15%' }}></Column>
           <Column field="date_end" header="Date End" style={{ width: '15%' }}></Column>
         </DataTable>
+        <Paginator first={(page - 1) * rows} rows={12} totalRecords={126335} onPageChange={onPageChange} />
       </PrimeReactProvider>
     </div>
   )
