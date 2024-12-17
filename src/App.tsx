@@ -1,5 +1,4 @@
-import React from 'react'
-import Table from './table'
+import Table from './Table'
 import 'primereact/resources/themes/lara-light-cyan/theme.css'
 
 function App() {
