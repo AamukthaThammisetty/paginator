@@ -82,7 +82,7 @@ export default function Table() {
           <Column field="date_start" header="Date Start" style={{ width: '15%' }}></Column>
           <Column field="date_end" header="Date End" style={{ width: '15%' }}></Column>
         </DataTable>
-        <Paginator first={(page - 1) * rows} rows={12} totalRecords={126335} rowsPerPageOptions={[10, 20, 30]} onPageChange={onPageChange} />
+        <Paginator first={(page - 1) * rows} rows={12} totalRecords={126335} onPageChange={onPageChange} />
       </PrimeReactProvider>
     </div>
   )
