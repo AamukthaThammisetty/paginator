@@ -1,50 +1,47 @@
-# React + TypeScript + Vite
+Paginator with Row Selection in PrimeReact
+This project demonstrates a DataTable component with pagination, row selection, and the ability to programmatically select rows across multiple pages based on user input. It uses the PrimeReact library for the table, paginator, and other UI components.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features:
+Data Fetching with Pagination
 
-Currently, two official plugins are available:
+Dynamic data fetching from an API using Axios.
+Paginator enables navigation between pages with options for rows per page.
+Row Selection Across Pages
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Users can input the number of rows to select via an Overlay Panel.
+Rows are selected across multiple pages if the current page does not contain enough rows.
+Interactive Table with Checkboxes
 
-## Expanding the ESLint configuration
+Multi-row selection using checkboxes with borders for better visibility.
+Selection logic dynamically updates as rows are selected across pages.
+Overlay Panel for Input
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The OverlayPanel component allows users to input the desired number of rows to select.
+A Submit button applies the row selection logic seamlessly.
+Technologies Used:
+React: Component-based UI design and state management.
+PrimeReact: A robust UI component library for React applications, including DataTable, Paginator, OverlayPanel, and Buttons.
+Axios: HTTP client for API calls to fetch data dynamically.
+React Icons: For icons like the Chevron Down icon used in buttons.
+CSS: Custom styles for checkboxes, overlay input fields, and other UI elements.
+TypeScript: Ensures type safety and better code maintenance.
+How It Works
+Data Fetching
 
-- Configure the top-level `parserOptions` property like this:
+Data is fetched from the API endpoint:
+https://api.artic.edu/api/v1/artworks?page=${page}.
+Pagination
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+The Paginator component enables navigation between pages.
+Rows per page are fixed at 12.
+Row Selection Logic
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Users input the desired number of rows via an overlay input panel.
+If the input exceeds the current page rows, rows are fetched from subsequent pages.
+Example:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Input: 15
+Page 1 contains 12 rows → 3 rows are fetched from Page 2.
+Overlay Input Panel
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Users enter the desired row count, and rows are programmatically selected.
